@@ -1,0 +1,1350 @@
+{
+  "lab_info": {
+    "institution": "",
+    "address": "",
+    "city": "",
+    "country": "",
+    "contact_name": "",
+    "email": "",
+    "year": 2025,
+    "month": 9,
+    "day": 3
+  },
+  "samples": {
+    "1": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "3",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "1",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "2",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "Negative",
+      "pcr_protocol": "protocol 1",
+      "elek_result": "Positive",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "comments toxin",
+      "seq_method": "WGS",
+      "platform": "Illumina",
+      "read_length": "150",
+      "comparison_method": "cgMLST",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "gene1, gene2\n",
+      "dt_detected": "Yes",
+      "genomics_comments": "comments genomics"
+    },
+    "2": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "4",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "3",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "3",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "3": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "4": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "comments toxin 4\n",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "5": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "6": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "7": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "8": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "9": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    },
+    "10": {
+      "species_identified": "",
+      "id_method": "",
+      "company": "",
+      "id_comments": "",
+      "ast_table": [
+        {
+          "Antibiotic": "Benzylpenicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Amoxicillin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Cefotaxime",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Meropenem",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Ciprofloxacin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Erythromycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Clindamycin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Doxycycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Tetracycline",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Linezolid",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Rifampicin",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        },
+        {
+          "Antibiotic": "Trimethoprim-sulfamethoxazole",
+          "Disk content (µg)": "",
+          "Zone diameter (mm)": "",
+          "MIC (mg/L)": "",
+          "Reported result (S/I/R)": "",
+          "Method": "",
+          "Guideline": ""
+        }
+      ],
+      "ast_comments": "",
+      "pcr_result": "",
+      "pcr_protocol": "",
+      "elek_result": "",
+      "elek_protocol": "",
+      "additional_tests": "",
+      "toxin_comments": "",
+      "seq_method": "",
+      "platform": "",
+      "read_length": "",
+      "comparison_method": "",
+      "sequence_type": "",
+      "closest_rel": "",
+      "amr_genes": "",
+      "dt_detected": "",
+      "genomics_comments": ""
+    }
+  },
+  "needs": {
+    "supply of selective media": 4,
+    "DT-PCR capacity": 2,
+    "supply of Elek basal medium": 3,
+    "supply of diphtheria antitoxin": 4,
+    "availability of a rapid toxin test": 3,
+    "antibiotic resistance testing": 2,
+    "supply of reference material °": 3,
+    "sequencing capacity": 4,
+    "EQA distribution": 3,
+    "laboratory training workshop": 3,
+    "other_notes": "",
+    "reference_material": ""
+  },
+  "submitted_at": "2025-09-03T10:07:44.982644Z"
+}
