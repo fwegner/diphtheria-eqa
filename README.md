@@ -16,3 +16,10 @@
 
 - Run `python data/generate_totp_qr.py`.
 - PNG files are created under `data/totp_qr/` and `data/totp_qr/totp_qr_embeds.csv` contains the provisioning URI plus a base64 `data:` URL per user for embedding directly into emails.
+
+## Managing users
+
+- Create or update user credentials (password + TOTP secret) with `python data/add_user.py <username> [--admin] [--force] [--password ...] [--totp-secret ...]`.
+  - By default, only add a username and then a strong temporary password and TOTP secret are generated automatically; use `--force` to regenerate credentials for an existing user.
+  - The script updates both `data/users.db` (hashed password, TOTP secret) and rewrites `data/initial_credentials.csv` with the latest values. Check initial_credentials to share username, password and TOTP token with partners.
+- After adding users, rerun `python data/generate_totp_qr.py` to refresh the QR codes and base64 email embeds.
