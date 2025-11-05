@@ -1,56 +1,284 @@
 
-import streamlit as st
-import pandas as pd
-import json, os, datetime as dt
+import io
+import json
+import os
+import secrets
+import sqlite3
+import datetime as dt
 from pathlib import Path
+from typing import Dict, Optional
+
+import bcrypt
+import pandas as pd
+import pyotp
+import streamlit as st
+import qrcode
 
 st.set_page_config(page_title="Diphtheria EQA Portal", layout="wide")
 
 DATA_DIR = Path("data")
 SUBMIT_DIR = DATA_DIR / "submissions"
 SUBMIT_DIR.mkdir(parents=True, exist_ok=True)
+AUTH_DB = DATA_DIR / "users.db"
+INITIAL_CREDENTIALS_PATH = DATA_DIR / "initial_credentials.csv"
+DEFAULT_USERS = [
+    {"username": "admin", "is_admin": True},
+    {"username": "lab1", "is_admin": False},
+    {"username": "lab2", "is_admin": False},
+]
 
-# --- Simple auth (prototype) ---
-def load_users_csv(path="users.csv"):
-    import csv
-    users = {}
-    if os.path.exists(path):
-        with open(path, newline='', encoding='utf-8') as f:
+
+def _get_seed_users():
+    """Collect the initial set of users from users.csv (if present) or fall back to defaults."""
+    users_csv = Path("users.csv")
+    seed_users = []
+    if users_csv.exists():
+        import csv
+
+        with open(users_csv, newline="", encoding="utf-8") as f:
             for row in csv.DictReader(f):
-                users[row['username']] = row['password']
-    return users
+                username = (row.get("username") or "").strip()
+                if not username:
+                    continue
+                seed_users.append(
+                    {
+                        "username": username,
+                        "is_admin": username.lower() == "admin",
+                    }
+                )
+    return seed_users or DEFAULT_USERS
 
-def check_login(u, p, users):
-    # WARNING: prototype plain-text check for simplicity; replace with hashed passwords in production
-    return users.get(u) == p
 
-if "auth" not in st.session_state:
-    st.session_state.auth = {"ok": False, "user": None, "is_admin": False}
+def _export_initial_credentials(rows):
+    """Persist the one-time credentials so admins can distribute them securely."""
+    if not rows or INITIAL_CREDENTIALS_PATH.exists():
+        return
+    INITIAL_CREDENTIALS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(INITIAL_CREDENTIALS_PATH, "w", encoding="utf-8") as handle:
+        handle.write("username,password,totp_secret,is_admin\n")
+        for row in rows:
+            handle.write(
+                f"{row['username']},{row['password']},{row['totp_secret']},{int(row['is_admin'])}\n"
+            )
 
-if not st.session_state.auth["ok"]:
+
+def _get_connection():
+    conn = sqlite3.connect(AUTH_DB)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+
+def verify_password(password: str, hashed: str) -> bool:
+    try:
+        return bcrypt.checkpw(password.encode("utf-8"), hashed.encode("utf-8"))
+    except ValueError:
+        return False
+
+
+def initialize_user_store():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with _get_connection() as conn:
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS users (
+                username TEXT PRIMARY KEY,
+                password_hash TEXT NOT NULL,
+                totp_secret TEXT NOT NULL,
+                is_admin INTEGER NOT NULL DEFAULT 0,
+                must_change_password INTEGER NOT NULL DEFAULT 1
+            )
+            """
+        )
+        conn.commit()
+        existing_count = conn.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+        if existing_count:
+            return
+
+        seed_users = _get_seed_users()
+        issued_credentials = []
+        for user in seed_users:
+            random_password = secrets.token_urlsafe(12)
+            password_hash = hash_password(random_password)
+            totp_secret = pyotp.random_base32()
+            conn.execute(
+                """
+                INSERT INTO users (username, password_hash, totp_secret, is_admin, must_change_password)
+                VALUES (?, ?, ?, ?, 1)
+                """,
+                (
+                    user["username"],
+                    password_hash,
+                    totp_secret,
+                    1 if user["is_admin"] else 0,
+                ),
+            )
+            issued_credentials.append(
+                {
+                    "username": user["username"],
+                    "password": random_password,
+                    "totp_secret": totp_secret,
+                    "is_admin": user["is_admin"],
+                }
+            )
+        conn.commit()
+    _export_initial_credentials(issued_credentials)
+
+
+def get_user(username: str) -> Optional[Dict]:
+    if not username:
+        return None
+    with _get_connection() as conn:
+        row = conn.execute(
+            """
+            SELECT username, password_hash, totp_secret, is_admin, must_change_password
+            FROM users
+            WHERE lower(username) = lower(?)
+            """,
+            (username,),
+        ).fetchone()
+    if not row:
+        return None
+    return {
+        "username": row["username"],
+        "password_hash": row["password_hash"],
+        "totp_secret": row["totp_secret"],
+        "is_admin": bool(row["is_admin"]),
+        "must_change_password": bool(row["must_change_password"]),
+    }
+
+
+def verify_totp(secret: str, token: str) -> bool:
+    if not secret or not token:
+        return False
+    token = token.strip().replace(" ", "")
+    if not token.isdigit():
+        return False
+    totp = pyotp.TOTP(secret)
+    return bool(totp.verify(token, valid_window=1))
+
+
+def update_password(username: str, new_password: str):
+    hashed = hash_password(new_password)
+    with _get_connection() as conn:
+        conn.execute(
+            """
+            UPDATE users
+            SET password_hash = ?, must_change_password = 0
+            WHERE username = ?
+            """,
+            (hashed, username),
+        )
+        conn.commit()
+
+
+initialize_user_store()
+
+# --- Authentication helpers ---
+def ensure_session_defaults():
+    if "auth" not in st.session_state:
+        st.session_state.auth = {
+            "ok": False,
+            "user": None,
+            "is_admin": False,
+            "must_change_password": False,
+        }
+    st.session_state.setdefault("login_stage", "credentials")
+    st.session_state.setdefault("pending_user", None)
+
+
+def render_credentials_step():
     st.title("Diphtheria (Corynebacterium) EQA Portal")
     st.caption("University of Zurich — External Quality Assessment (ring trial)")
-    users = load_users_csv()
-    col1, col2 = st.columns([1,1])
-    with col1:
-        u = st.text_input("Username")
-    with col2:
-        p = st.text_input("Password", type="password")
-    if st.button("Login"):
-        if check_login(u, p, users):
-            st.session_state.auth.update({"ok": True, "user": u, "is_admin": u.lower()=="admin"})
-            st.success(f"Welcome, {u}.")
-            st.rerun()()
+    with st.form("login_credentials_form", clear_on_submit=False):
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Continue")
+    if submitted:
+        user_record = get_user(username)
+        if not user_record or not verify_password(password, user_record["password_hash"]):
+            st.error("Invalid username or password.")
         else:
-            st.error("Invalid credentials.")
+            st.session_state.pending_user = user_record
+            st.session_state.login_stage = "totp"
+            st.rerun()
+
+
+def render_totp_step():
+    pending = st.session_state.get("pending_user")
+    if not pending:
+        st.session_state.login_stage = "credentials"
+        st.rerun()
+    st.title("Two-factor authentication")
+    st.caption(
+        "Enter the 6-digit code from your authenticator app. Codes refresh every 30 seconds."
+    )
+    totp_code = st.text_input("Authenticator code", max_chars=6, type="password")
+    col1, col2 = st.columns([1, 1])
+    verify = col1.button("Verify", use_container_width=True)
+    back = col2.button("Back", use_container_width=True)
+    if back:
+        st.session_state.login_stage = "credentials"
+        st.session_state.pending_user = None
+        st.rerun()
+    if verify:
+        if verify_totp(pending["totp_secret"], totp_code):
+            st.session_state.auth.update(
+                {
+                    "ok": True,
+                    "user": pending["username"],
+                    "is_admin": pending["is_admin"],
+                    "must_change_password": pending["must_change_password"],
+                }
+            )
+            st.session_state.login_stage = "credentials"
+            st.session_state.pending_user = None
+            st.success("Authentication successful.")
+            st.rerun()
+        else:
+            st.error("Invalid authentication code.")
+
+
+def require_login():
+    ensure_session_defaults()
+    if st.session_state.login_stage == "credentials":
+        render_credentials_step()
+    else:
+        render_totp_step()
     st.stop()
+
+
+ensure_session_defaults()
+
+if not st.session_state.auth["ok"]:
+    require_login()
 
 # --- App starts ---
 user = st.session_state.auth["user"]
 is_admin = st.session_state.auth["is_admin"]
+must_change_password = st.session_state.auth.get("must_change_password", False)
 
 st.sidebar.markdown("### Navigation")
-page = st.sidebar.radio("Go to", ["Submit results", "Download (admin)"] if is_admin else ["Submit results"])
+if must_change_password:
+    st.sidebar.warning("Please change your password in Account settings.")
+nav_options = ["Submit results"]
+if is_admin:
+    nav_options.append("Download (admin)")
+nav_options.append("Account settings")
+page = st.sidebar.radio("Go to", nav_options)
+if st.sidebar.button("Log out"):
+    st.session_state.auth = {
+        "ok": False,
+        "user": None,
+        "is_admin": False,
+        "must_change_password": False,
+    }
+    st.session_state.login_stage = "credentials"
+    st.session_state.pending_user = None
+    st.rerun()
 
 # Shared helpers
 def save_json(obj, path: Path):
@@ -443,6 +671,54 @@ if page == "Submit results":
         data["submitted_at"] = dt.datetime.utcnow().isoformat() + "Z"
         save_json(data, draft_path)
         st.success("Submission saved. Thank you!")
+
+if page == "Account settings":
+    st.header("Account settings")
+    st.write(f"Logged in as **{user}**.")
+    account = get_user(user)
+    if not account:
+        st.error("Unable to load your account details.")
+    else:
+        with st.expander("Authenticator setup (TOTP)", expanded=False):
+            st.write(
+                "Scan the QR code below or enter the secret manually in Google Authenticator, Microsoft Authenticator, or any TOTP-compatible app."
+            )
+            provisioning_uri = pyotp.TOTP(account["totp_secret"]).provisioning_uri(
+                name=account["username"], issuer_name="Diphtheria EQA Portal"
+            )
+            qr_img = qrcode.make(provisioning_uri)
+            buf = io.BytesIO()
+            qr_img.save(buf, format="PNG")
+            buf.seek(0)
+            st.image(buf, caption="Authenticator QR code", use_column_width=False)
+            st.write("Manual secret:")
+            st.code(account["totp_secret"])
+            st.write("Provisioning URI:")
+            st.code(provisioning_uri)
+        st.markdown("---")
+        st.subheader("Change password")
+        with st.form("change_password_form"):
+            current_password = st.text_input("Current password", type="password")
+            new_password = st.text_input("New password", type="password")
+            confirm_password = st.text_input("Confirm new password", type="password")
+            submitted = st.form_submit_button("Update password")
+        if submitted:
+            if not current_password or not new_password or not confirm_password:
+                st.error("All password fields are required.")
+            elif not verify_password(current_password, account["password_hash"]):
+                st.error("Current password is incorrect.")
+            elif new_password != confirm_password:
+                st.error("New password entries do not match.")
+            elif len(new_password) < 10:
+                st.error("Password must be at least 10 characters.")
+            elif verify_password(new_password, account["password_hash"]):
+                st.error("New password must be different from the current password.")
+            else:
+                update_password(account["username"], new_password)
+                st.session_state.auth["must_change_password"] = False
+                st.success("Password updated successfully.")
+                # Refresh local details so subsequent operations see the updated hash
+                account = get_user(user)
 
 # ---------- Admin download ----------
 if page == "Download (admin)" and is_admin:
