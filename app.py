@@ -321,9 +321,9 @@ if page == "Submit results":
                     key=f"sid_readlen_{i}",
                 )
             with c5:
-                sdat["mean depth"] = st.text_input(
-                    "mean depth",
-                    value=sdat.get("mean depth", ""),
+                sdat["mean read depth"] = st.text_input(
+                    "mean read depth",
+                    value=sdat.get("mean read depth", ""),
                     key=f"sid_depth_{i}",
                 )
             with c6:
@@ -380,15 +380,15 @@ if page == "Submit results":
             # Row 5: AMR detected genes (textarea) / AMR detection method / AMR database
             c13, c14, c15 = st.columns(3)
             with c13:
-                sdat["AMR  detected genes"] = st.text_area(
-                    "AMR  detected genes",
-                    value=sdat.get("AMR  detected genes", ""),
+                sdat["Detected AMR genes"] = st.text_area(
+                    "Detected AMR geness",
+                    value=sdat.get("Detected AMR genes", ""),
                     key=f"sid_amrgenes_{i}",
                 )
             with c14:
-                sdat["AMR detection method"] = st.text_input(
-                    "AMR detection method",
-                    value=sdat.get("AMR detection method", ""),
+                sdat["AMR gene detection method"] = st.text_input(
+                    "AMR gene detection method",
+                    value=sdat.get("AMR gene detection method", ""),
                     key=f"sid_amrmethod_{i}",
                 )
             with c15:
