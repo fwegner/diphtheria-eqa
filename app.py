@@ -409,47 +409,7 @@ if page == "Submit results":
                 "Guideline": ["" for _ in antibiotic_list],
             })
 
-            # Global controls (apply to all rows)
-            gc1, gc2 = st.columns(2)
-            with gc1:
-                _global_method = st.selectbox(
-                    "AST Method (applies to ALL rows, optional)",
-                    [""] + _method_options,
-                    index=([""] + _method_options).index("") if sdat.get("ast_global_method", "") == "" else 0,
-                    key=f"ast_method_all_{i}",
-                )
-                _global_method_other = ""
-                if _global_method == "other (please specify which in Details)":
-                    _global_method_other = st.text_input(
-                        "Details for 'Method: other'",
-                        value=sdat.get("ast_global_method_other", ""),
-                        key=f"ast_method_other_{i}",
-                    )
-            with gc2:
-                _global_guideline = st.selectbox(
-                    "Guideline (applies to ALL rows, optional)",
-                    [""] + _guideline_options,
-                    index=([""] + _guideline_options).index("") if sdat.get("ast_global_guideline", "") == "" else 0,
-                    key=f"ast_guideline_all_{i}",
-                )
-                _global_guideline_other = ""
-                if _global_guideline == "other (please specify which in Details)":
-                    _global_guideline_other = st.text_input(
-                        "Details for 'Guideline: other'",
-                        value=sdat.get("ast_global_guideline_other", ""),
-                        key=f"ast_guideline_other_{i}",
-                    )
-
-            # Apply-to-all button
-            if st.button("Apply selected Method & Guideline to ALL antibiotics", key=f"ast_apply_all_{i}"):
-                mval = _global_method if _global_method != "other (please specify which in Details)" else _global_method_other.strip()
-                gval = _global_guideline if _global_guideline != "other (please specify which in Details)" else _global_guideline_other.strip()
-                if mval:
-                    ast_df["Method"] = mval
-                if gval:
-                    ast_df["Guideline"] = gval
-                st.success("Applied to all rows.")
-
+            
             # Per-row editor with dropdowns for Method & Guideline
             ast_df = st.data_editor(
                 ast_df,
@@ -481,10 +441,7 @@ if page == "Submit results":
                 value=sdat.get("ast_comments", ""),
                 key=f"sid_ast_comments_{i}",
             )
-            sdat["ast_global_method"] = _global_method
-            sdat["ast_global_method_other"] = _global_method_other if _global_method.endswith("Details)") else ""
-            sdat["ast_global_guideline"] = _global_guideline
-            sdat["ast_global_guideline_other"] = _global_guideline_other if _global_guideline.endswith("Details)") else ""
+            
             # ---- End AST ----
 
             # st.markdown("#### Antibiotic susceptibility testing (AST)")
@@ -642,9 +599,9 @@ if page == "Submit results":
                     key=f"sid_dtmethod_{i}",
                 )
             with c17:
-                sdat["Comments"] = st.text_area(
-                    "Comments",
-                    value=sdat.get("Comments", ""),
+                sdat["wgs_comments"] = st.text_area(
+                    "Comments (WGS)",
+                    value=sdat.get("wgs_comments", ""),
                     key=f"geno_comments_{i}",
                 )
             # ---- End Genomics / WGS ----

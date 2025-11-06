@@ -2,4 +2,6 @@
 .DS_Store
 
 # Local data & submissions
-data/
+data/totp_qr
+data/submissions
+.devcontainer
