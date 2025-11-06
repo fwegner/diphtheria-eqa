@@ -1,2 +1,6 @@
 streamlit
 pandas
+bcrypt
+pyotp
+qrcode
+pillow
