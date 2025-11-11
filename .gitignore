@@ -3,5 +3,8 @@
 
 # Local data & submissions
 data/totp_qr
+data/totp_qr_old
 data/submissions
+data/initial_credentials.csv
+for_vladimira/
 .devcontainer

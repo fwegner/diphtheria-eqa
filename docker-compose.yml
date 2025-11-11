@@ -1,0 +1,10 @@
+services:
+  portal:
+    build: .
+    ports:
+      - "80:8501"
+    volumes:
+      - ./data:/app/data
+    environment:
+      STREAMLIT_SERVER_ENABLE_CORS: "false"
+      STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION: "false"
