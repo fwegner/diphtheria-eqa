@@ -320,7 +320,26 @@ if page == "Submit results":
     st.markdown("---")
     st.subheader("Per-sample results")
 
-    sample_tabs = st.tabs([f"Sample {i}" for i in range(1,11)])
+    if "show_all_samples" not in st.session_state:
+        st.session_state.show_all_samples = False
+
+    existing_ids = [int(k) for k in data.get("samples", {}).keys() if str(k).isdigit()]
+    max_existing = max(existing_ids, default=10)
+    total_samples = max(10, max_existing)
+
+    if max_existing > 10:
+        if not st.session_state.show_all_samples:
+            st.info(f"This submission has {max_existing} samples. Showing the first 10.")
+            if st.button("Show all samples"):
+                st.session_state.show_all_samples = True
+                st.rerun()
+        else:
+            if st.button("Show first 10 samples"):
+                st.session_state.show_all_samples = False
+                st.rerun()
+
+    sample_count = total_samples if st.session_state.show_all_samples else 10
+    sample_tabs = st.tabs([f"Sample {i}" for i in range(1, sample_count + 1)])
     antibiotic_list = ['Benzylpenicillin', 'Amoxicillin', 'Cefotaxime', 'Meropenem', 'Ciprofloxacin', 'Erythromycin', 'Clindamycin', 'Doxycycline', 'Tetracycline', 'Linezolid', 'Rifampicin', 'Trimethoprim-sulfamethoxazole']
 
     for i, tab in enumerate(sample_tabs, start=1):
@@ -681,25 +700,44 @@ if page == "Account settings":
 if page == "Download (admin)" and is_admin:
     st.header("Admin — Download Submissions")
     files = sorted(SUBMIT_DIR.glob("*.json"))
-    st.write(f"Found **{len(files)}** submissions.")
-    if not files:
+    submitted_entries = []
+    for fp in files:
+        try:
+            obj = json.load(open(fp, "r", encoding="utf-8"))
+        except Exception:
+            continue
+        if not obj.get("submitted_at"):
+            continue
+        submitted_entries.append((fp, obj))
+
+    st.write(f"Found **{len(submitted_entries)}** submitted submissions.")
+    if not submitted_entries:
         st.stop()
 
     # Aggregate into flat tables
     lab_rows, id_rows, ast_rows, toxin_rows, gen_rows, need_rows = [], [], [], [], [], []
 
-    for fp in files:
-        obj = json.load(open(fp, "r", encoding="utf-8"))
+    def _first_value(obj, keys, default=""):
+        for key in keys:
+            val = obj.get(key)
+            if val not in (None, ""):
+                return val
+        return default
+
+    for fp, obj in submitted_entries:
         lab = Path(fp).stem
         li = obj.get("lab_info", {})
         lab_rows.append({"lab": lab, **li, "submitted_at": obj.get("submitted_at")})
         # needs
         n = obj.get("needs", {}).copy()
         other = n.pop("other_notes", "")
-        for k,v in n.items():
-            need_rows.append({"lab": lab, "need": k, "rating": v})
+        for k, v in n.items():
+            if isinstance(v, (int, float)):
+                need_rows.append({"lab": lab, "need": k, "rating": v, "text": ""})
+            else:
+                need_rows.append({"lab": lab, "need": k, "rating": None, "text": str(v)})
         if other:
-            need_rows.append({"lab": lab, "need": "other_notes", "rating": "", "text": other})
+            need_rows.append({"lab": lab, "need": "other_notes", "rating": None, "text": other})
         # per sample
         for sid, sdat in obj.get("samples", {}).items():
             id_rows.append({"lab": lab, "sample": sid, "species_identified": sdat.get("species_identified",""), "id_method": sdat.get("id_method",""), "company": sdat.get("company",""), "id_comments": sdat.get("id_comments","")})
@@ -714,11 +752,35 @@ if page == "Download (admin)" and is_admin:
                 "additional_tests": sdat.get("additional_tests",""), "toxin_comments": sdat.get("toxin_comments","")
             })
             gen_rows.append({
-                "lab": lab, "sample": sid, "seq_method": sdat.get("seq_method",""), "platform": sdat.get("platform",""),
-                "read_length": sdat.get("read_length",""), "comparison_method": sdat.get("comparison_method",""),
-                "sequence_type": sdat.get("sequence_type",""), "closest_rel": sdat.get("closest_rel",""),
-                "amr_genes": sdat.get("amr_genes",""), "dt_detected": sdat.get("dt_detected",""),
-                "genomics_comments": sdat.get("genomics_comments","")
+                "lab": lab,
+                "sample": sid,
+                "seq_method": _first_value(sdat, ["Sequencing Method", "seq_method"]),
+                "platform": _first_value(sdat, ["Technology", "platform"]),
+                "library_method": _first_value(sdat, ["library method", "library_method"]),
+                "read_length": _first_value(sdat, ["(median) read length", "read_length"]),
+                "mean_read_depth": _first_value(sdat, ["mean read depth", "mean_read_depth"]),
+                "wgs_species_identified": _first_value(sdat, ["Species identified", "wgs_species_identified"]),
+                "species_id_method": _first_value(sdat, ["Method of species ID", "species_id_method"]),
+                "comparison_method": _first_value(sdat, ["Genome Comparison Method", "comparison_method"]),
+                "sequence_type": _first_value(sdat, ["MLST/Sequence Type", "sequence_type"]),
+                "relevant_software": _first_value(sdat, ["Relevant software", "relevant_software"]),
+                "closest_rel": _first_value(sdat, ["Closest related isolate", "closest_rel"]),
+                "distance_to_closest_rel": _first_value(
+                    sdat,
+                    ["distance to closest related isolate (with units!)", "distance_to_closest_rel"],
+                ),
+                "amr_genes": _first_value(sdat, ["Detected AMR genes", "amr_genes"]),
+                "amr_detection_method": _first_value(
+                    sdat,
+                    ["AMR gene detection method", "amr_detection_method"],
+                ),
+                "amr_database": _first_value(sdat, ["AMR database", "amr_database"]),
+                "dt_detected": _first_value(sdat, ["DT detected", "dt_detected"]),
+                "dt_detection_method": _first_value(
+                    sdat,
+                    ["DT detection method", "dt_detection_method"],
+                ),
+                "genomics_comments": _first_value(sdat, ["Comments", "wgs_comments", "genomics_comments"]),
             })
 
     dfs = {
