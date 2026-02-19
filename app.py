@@ -296,7 +296,7 @@ def load_json(path: Path, default):
 # ---------- Submit results (per lab) ----------
 if page == "Submit results":
     st.header("Lab Submission")
-    st.write("Fill in information for **10 samples** and your **capacity needs**. You can save and resume later with the same login.")
+    st.write("Fill in information for **13 samples** and your **capacity needs**. You can save and resume later with the same login.")
 
     # Load or init draft
     draft_path = SUBMIT_DIR / f"{user}.json"
@@ -324,21 +324,21 @@ if page == "Submit results":
         st.session_state.show_all_samples = False
 
     existing_ids = [int(k) for k in data.get("samples", {}).keys() if str(k).isdigit()]
-    max_existing = max(existing_ids, default=10)
-    total_samples = max(10, max_existing)
+    max_existing = max(existing_ids, default=13)
+    total_samples = max(13, max_existing)
 
-    if max_existing > 10:
+    if max_existing > 13:
         if not st.session_state.show_all_samples:
-            st.info(f"This submission has {max_existing} samples. Showing the first 10.")
+            st.info(f"This submission has {max_existing} samples. Showing the first 13.")
             if st.button("Show all samples"):
                 st.session_state.show_all_samples = True
                 st.rerun()
         else:
-            if st.button("Show first 10 samples"):
+            if st.button("Show first 13 samples"):
                 st.session_state.show_all_samples = False
                 st.rerun()
 
-    sample_count = total_samples if st.session_state.show_all_samples else 10
+    sample_count = total_samples if st.session_state.show_all_samples else 13
     sample_tabs = st.tabs([f"Sample {i}" for i in range(1, sample_count + 1)])
     antibiotic_list = ['Benzylpenicillin', 'Amoxicillin', 'Cefotaxime', 'Meropenem', 'Ciprofloxacin', 'Erythromycin', 'Clindamycin', 'Doxycycline', 'Tetracycline', 'Linezolid', 'Rifampicin', 'Trimethoprim-sulfamethoxazole']
 
