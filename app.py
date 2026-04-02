@@ -730,14 +730,36 @@ if page == "Download (admin)" and is_admin:
         lab_rows.append({"lab": lab, **li, "submitted_at": obj.get("submitted_at")})
         # needs
         n = obj.get("needs", {}).copy()
-        other = n.pop("other_notes", "")
+        reference_material = str(n.get("reference_material", "") or "")
+        other = str(n.pop("other_notes", "") or "")
         for k, v in n.items():
             if isinstance(v, (int, float)):
-                need_rows.append({"lab": lab, "need": k, "rating": v, "text": ""})
+                need_rows.append({
+                    "lab": lab,
+                    "need": k,
+                    "rating": v,
+                    "text": "",
+                    "reference_material_text": reference_material,
+                    "other_notes_text": other,
+                })
             else:
-                need_rows.append({"lab": lab, "need": k, "rating": None, "text": str(v)})
+                need_rows.append({
+                    "lab": lab,
+                    "need": k,
+                    "rating": None,
+                    "text": str(v),
+                    "reference_material_text": reference_material,
+                    "other_notes_text": other,
+                })
         if other:
-            need_rows.append({"lab": lab, "need": "other_notes", "rating": None, "text": other})
+            need_rows.append({
+                "lab": lab,
+                "need": "other_notes",
+                "rating": None,
+                "text": other,
+                "reference_material_text": reference_material,
+                "other_notes_text": other,
+            })
         # per sample
         for sid, sdat in obj.get("samples", {}).items():
             id_rows.append({"lab": lab, "sample": sid, "species_identified": sdat.get("species_identified",""), "id_method": sdat.get("id_method",""), "company": sdat.get("company",""), "id_comments": sdat.get("id_comments","")})
@@ -745,6 +767,7 @@ if page == "Download (admin)" and is_admin:
             for rec in sdat.get("ast_table", []):
                 row = {"lab": lab, "sample": sid}
                 row.update(rec)
+                row["ast_comments"] = sdat.get("ast_comments", "")
                 ast_rows.append(row)
             toxin_rows.append({
                 "lab": lab, "sample": sid, "pcr_result": sdat.get("pcr_result",""), "pcr_protocol": sdat.get("pcr_protocol",""),
